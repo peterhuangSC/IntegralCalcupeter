@@ -1,7 +1,7 @@
 Integral Calcupeter is an integral calculator that solves various integration
 problems such as work, energy, electric potential, and even kinematics!
 
-Author: 黃釗鴻 (Peter Huang)
+Author: 黄钊鸿 (Peter Huang)
 Date: December 28 2014
 Time: 1:30 AM EST
 Edits: 1
