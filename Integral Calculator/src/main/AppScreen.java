@@ -16,23 +16,19 @@ import javax.swing.SpringLayout;
 
 public class AppScreen extends JPanel{
 
-	/** This layout is the layout manager for the JPanel.
-	 */
-	SpringLayout layout = new SpringLayout();
-
-	/** This boolean holds the value of whether or not the game thread is running.
-	 */
-	public boolean running;
-
-	/** This points to the graphics object of the background, allowing for direct manipulation of its contents.
-	 */
-	Graphics2D g;
+	SpringLayout layout = new SpringLayout(); //This layout is the layout manager for the JPanel.	
+	Graphics2D g; //This points to the graphics object of the background, allowing for direct manipulation of its contents.
+	
+	public boolean running; //This boolean holds the value of whether or not the game thread is running.
+	
+	public static final int MAIN_WIDTH = 960;
+	public static final int MAIN_HEIGHT = 640;
 
 	/** This constructor sets running to true, sets the properties of the JPanel and starts the game thread.
 	 */
 	public AppScreen() {	
 		setLayout(layout);
-		setPreferredSize(new Dimension(600, 600));
+		setPreferredSize(new Dimension(MAIN_WIDTH, MAIN_HEIGHT));
 		setFocusable(true);
 		setBackground(Color.WHITE);
 	}
