@@ -1,7 +1,8 @@
 package appstate;
 
-import javax.swing.*;
-import main.AppScreen;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.SpringLayout;
 
 /**
  * Splash Screen Class of Integration Calcupeter
@@ -11,17 +12,17 @@ import main.AppScreen;
 
 public class SplashState extends AppState {
 
-	//can access the final width and height variables from AppScreen
-	AppScreen app1;	
-
-	/** This is the constructor which sets up the gsm variables.
+	/** 
+     * This is the constructor which sets up the gsm variables.
 	 * The variables is set to the passed in value of gsm.
-	 * @param gsm GameStateManager reference variable */
+	 * @param gsm GameStateManager reference variable 
+	 * */
 	public SplashState(AppStateManager asm){
 		this.asm = asm;
 	}
 
-	/** This method initializes the animation. The try catch structure is used to prevent any errors when opening the
+	/** 
+	 * This method initializes the animation. The try catch structure is used to prevent any errors when opening the
 	 * image and animated image files to load onto the screen.
 	 * @param splashScreen - Reference variable for JLabel, stores the picture.
 	 * @param gif - ImageIcon variable that stores the animated image.
@@ -29,15 +30,17 @@ public class SplashState extends AppState {
 	 */
 	public void init() {
 		JLabel splashScreen = new JLabel();
-		ImageIcon gif = new ImageIcon();
+		ImageIcon gif;
 		try {
-			gif = new ImageIcon(getClass().getResource("/source/resources/Splash Screen.gif"));
+			//gif = new ImageIcon(getClass().getResource("D:/Integral Calculator WS/Integral Calculator/src/res/Splash_Screen.gif"));
+			gif = new ImageIcon("src/res/Splash_Screen.gif");
 			splashScreen = new JLabel(gif);
-			splashScreen.setBounds(1, 1, app1.MAIN_WIDTH, app1.MAIN_HEIGHT);
+			splashScreen.setBounds(1, 1, 960, 640);
 			asm.pane.add(splashScreen);
 			asm.layout.putConstraint(SpringLayout.WEST, splashScreen, 1, SpringLayout.WEST, asm.pane);
 		}
 		catch (Exception e) {
+			System.out.println("Splash Screen Initialization Error!");
 		}
 	}
 
@@ -46,7 +49,7 @@ public class SplashState extends AppState {
 	 */
 	public void update() {
 		try {
-			Thread.sleep(9500);
+			Thread.sleep(5500);
 		}
 		catch (Exception e) {
 		}
