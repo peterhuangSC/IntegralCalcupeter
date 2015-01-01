@@ -9,7 +9,7 @@ import main.AppScreen;
 
 /** Description: This class contains the various states of the game. States are changed through this class.
  * @author Peter Huang
- * @version 1.0 December 28 2014
+ * @version 1.0 December 30 2014
  */
 
 public class AppStateManager {
@@ -54,9 +54,14 @@ public class AppStateManager {
 	//public final int INPUTSCORESTATE = 3;
 	
 	/** 
-	 * Holds the value for difficultystate.
+	 * Holds the value for selectstate.
 	 */
-	//public final int DIFFICULTYSTATE = 4;
+	public final int SELECTSTATE = 2;
+	
+	/**
+	 * Holds the value for the definite integration state.
+	 */
+	public final int DEFINITE_INTEGRAL_STATE = 3;
 
 	/** 
 	 * Creates the AppStateManager while sending in the game screen for the game and its layout.
@@ -69,9 +74,11 @@ public class AppStateManager {
 		this.layout = s;
 		appStates.add(new SplashState(this));
 		appStates.add(new MenuState(this));
+		appStates.add(new SelectState(this));
+		appStates.add(new DefiniteState(this));
 		//appStates.add(new StageOneState(this));
 		//appStates.add(new InputScoreState(this));
-		//appStates.add(new DifficultyState(this));
+		
 		setState(SPLASHSTATE);
 	}
 

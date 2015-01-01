@@ -37,12 +37,7 @@ public class MenuState extends AppState implements ActionListener
 	 * This integer initiates the menu value to 0.
 	 */
 	int menu = 0;
-	
-	/**
-	 *  instructionsFrame - JFrame reference variable to the instructions frame with the frame name.
-	 */
-	JFrame instructionsFrame = new JFrame("Instructions");
-	
+		
 	/** 
 	 * studyFrame - JFrame reference variable to the study frame with the frame name.
 	 */
@@ -149,14 +144,14 @@ public class MenuState extends AppState implements ActionListener
 	private JButton calculate = new JButton();
 	
 	/** 
-	 * This button is the instructions button, which leads to a screen displaying the instructions for the game.
+	 * This button is the Coming Soon! button.
 	 */
-	private JButton instructions = new JButton(); 
+	private JButton comingSoon = new JButton(); 
 
 	/** 
 	 * This button is the study button, which displays study material.
 	 */
-	private JButton study = new JButton();
+	private JButton integral101 = new JButton();
 	
 	/** 
 	 * This button is the quit button, which exits the game.
@@ -213,20 +208,20 @@ public class MenuState extends AppState implements ActionListener
 		asm.layout.putConstraint(SpringLayout.NORTH, title, 0, SpringLayout.NORTH, asm.pane);
 		asm.layout.putConstraint(SpringLayout.WEST, title, 0, SpringLayout.WEST, asm.pane);
 
-		asm.layout.putConstraint(SpringLayout.NORTH, calculate, 350, SpringLayout.NORTH, title);
+		asm.layout.putConstraint(SpringLayout.NORTH, calculate, 330, SpringLayout.NORTH, title);
 		asm.layout.putConstraint(SpringLayout.WEST, calculate, 95, SpringLayout.WEST, asm.pane);
 
-		asm.layout.putConstraint(SpringLayout.NORTH, instructions, 0, SpringLayout.SOUTH, calculate);
-		asm.layout.putConstraint(SpringLayout.WEST, instructions, 95, SpringLayout.WEST, asm.pane); 
+		asm.layout.putConstraint(SpringLayout.NORTH, comingSoon, -10, SpringLayout.SOUTH, calculate);
+		asm.layout.putConstraint(SpringLayout.WEST, comingSoon, 105, SpringLayout.WEST, asm.pane); 
 
-		asm.layout.putConstraint(SpringLayout.NORTH, study, 12, SpringLayout.SOUTH, instructions);
-		asm.layout.putConstraint(SpringLayout.WEST, study, 95, SpringLayout.WEST, asm.pane);
+		asm.layout.putConstraint(SpringLayout.NORTH, integral101, -20, SpringLayout.SOUTH, comingSoon);
+		asm.layout.putConstraint(SpringLayout.WEST, integral101, 105, SpringLayout.WEST, asm.pane);
 
-		asm.layout.putConstraint(SpringLayout.NORTH, quit, 12, SpringLayout.SOUTH, study);
-		asm.layout.putConstraint(SpringLayout.WEST, quit, 95, SpringLayout.WEST, asm.pane);
+		asm.layout.putConstraint(SpringLayout.NORTH, quit, -20, SpringLayout.SOUTH, integral101);
+		asm.layout.putConstraint(SpringLayout.WEST, quit, 105, SpringLayout.WEST, asm.pane);
 
 		asm.layout.putConstraint(SpringLayout.NORTH, back, 535, SpringLayout.NORTH, asm.pane);
-		asm.layout.putConstraint(SpringLayout.WEST, back, 110, SpringLayout.WEST, asm.pane);
+		asm.layout.putConstraint(SpringLayout.WEST, back, 100, SpringLayout.WEST, asm.pane);
 	}
 
 	/** 
@@ -235,8 +230,8 @@ public class MenuState extends AppState implements ActionListener
 	public void addMenu() {
 		asm.pane.add(title);
 		asm.pane.add(calculate);
-		asm.pane.add(instructions);
-		asm.pane.add(study);
+		asm.pane.add(comingSoon);
+		asm.pane.add(integral101);
 		asm.pane.add(quit);
 	}
 
@@ -252,10 +247,10 @@ public class MenuState extends AppState implements ActionListener
 	 * <li>violinImg, ImageIcon, holds the violin image
 	 * <li>playImg, ImageIcon, holds the play button image
 	 * <li>playRollImg, ImageIcon, holds the play button rollover image
-	 * <li>instImg, ImageIcon, holds the instructions button image
-	 * <li>instRollImg, ImageIcon, holds the instructions button rollover image
-	 * <li>studyImg, ImageIcon, holds the study button image
-	 * <li>studyRollImg, ImageIcon, holds the study button rollover image
+	 * <li>instImg, ImageIcon, holds the comingSoon button image
+	 * <li>instRollImg, ImageIcon, holds the comingSoon button rollover image
+	 * <li>integral101Img, ImageIcon, holds the integral101 button image
+	 * <li>integral101RollImg, ImageIcon, holds the integral101 button rollover image
 	 * <li>quitImg, ImageIcon, holds the quit button image
 	 * <li>quitRollImg, ImageIcon, holds the quit button rollover image
 	 * <li>backImg, ImageIcon, holds the back button image
@@ -278,11 +273,11 @@ public class MenuState extends AppState implements ActionListener
 		ImageIcon calculateImg = new ImageIcon();
 		ImageIcon calculateRollImg = new ImageIcon();
 
-		ImageIcon instImg = new ImageIcon();
-		ImageIcon instRollImg = new ImageIcon();
+		ImageIcon comingSoonImg = new ImageIcon();
+		ImageIcon comingSoonRollImg = new ImageIcon();
 
-		ImageIcon studyImg = new ImageIcon();
-		ImageIcon studyRollImg = new ImageIcon();
+		ImageIcon integral101Img = new ImageIcon();
+		ImageIcon integral101RollImg = new ImageIcon();
 
 		ImageIcon quitImg = new ImageIcon();
 		ImageIcon quitRollImg = new ImageIcon();
@@ -303,14 +298,14 @@ public class MenuState extends AppState implements ActionListener
 			
 			calculateImg = new ImageIcon("src/res/menu_options/Calculate.png");
 			calculateRollImg = new ImageIcon("src/res/menu_options/Calculate2.png");
-			instImg = new ImageIcon("src/res/Menu Options/Instructions.png");
-			instRollImg = new ImageIcon("src/res/Menu Options/Instructions2.png");
-			studyImg = new ImageIcon("src/res/Menu Options/study.png");
-			studyRollImg = new ImageIcon("src/res/Menu Options/study2.png");
-			quitImg = new ImageIcon("src/res/Menu Options/quit.png");
-			quitRollImg = new ImageIcon("src/res/Menu Options/quit2.png");
-			backImg = new ImageIcon("src/res/Menu Options/Back.png");
-			backRollImg = new ImageIcon("src/res/Menu Options/Back2.png");
+			comingSoonImg = new ImageIcon("src/res/menu_options/Coming_Soon.png");
+			comingSoonRollImg = new ImageIcon("src/res/menu_options/Coming_Soon2.png");
+			integral101Img = new ImageIcon("src/res/menu_options/Integrals101.png");
+			integral101RollImg = new ImageIcon("src/res/menu_options/Integrals1012.png");
+			quitImg = new ImageIcon("src/res/menu_options/Exit.png");
+			quitRollImg = new ImageIcon("src/res/menu_options/Exit2.png");
+			backImg = new ImageIcon("src/res/menu_options/Back.png");
+			backRollImg = new ImageIcon("src/res/menu_options/Back2.png");
 		}
 		catch (NullPointerException e) {
 			e.printStackTrace();
@@ -334,19 +329,19 @@ public class MenuState extends AppState implements ActionListener
 		calculate.setFocusPainted(false);
 		calculate.setMnemonic(KeyEvent.VK_A);
 
-		instructions = new JButton(instImg);
-		instructions.setRolloverIcon(instRollImg);
-		instructions.setBorderPainted(false);
-		instructions.setContentAreaFilled(false);
-		instructions.setFocusPainted(false);
-		instructions.setMnemonic(KeyEvent.VK_S);
+		comingSoon = new JButton(comingSoonImg);
+		comingSoon.setRolloverIcon(comingSoonRollImg);
+		comingSoon.setBorderPainted(false);
+		comingSoon.setContentAreaFilled(false);
+		comingSoon.setFocusPainted(false);
+		comingSoon.setMnemonic(KeyEvent.VK_S);
 
-		study = new JButton(studyImg);
-		study.setRolloverIcon(studyRollImg);
-		study.setBorderPainted(false);
-		study.setContentAreaFilled(false);
-		study.setFocusPainted(false);
-		study.setMnemonic(KeyEvent.VK_W);
+		integral101 = new JButton(integral101Img);
+		integral101.setRolloverIcon(integral101RollImg);
+		integral101.setBorderPainted(false);
+		integral101.setContentAreaFilled(false);
+		integral101.setFocusPainted(false);
+		integral101.setMnemonic(KeyEvent.VK_W);
 
 		quit = new JButton(quitImg);
 		quit.setRolloverIcon(quitRollImg);
@@ -363,14 +358,14 @@ public class MenuState extends AppState implements ActionListener
 		back.setMnemonic(KeyEvent.VK_B);
 
 		calculate.setActionCommand("Calculate"); //changed setActionCommand from "Play"
-		instructions.setActionCommand("Instructions");
+		comingSoon.setActionCommand("Coming Soon"); //changed setActionCommand from "Instructions"
 		quit.setActionCommand("Quit");
 		back.setActionCommand("Back");
-		study.setActionCommand("Study");
+		integral101.setActionCommand("Integration 101");
 
 		calculate.addActionListener(this);
-		instructions.addActionListener(this);
-		study.addActionListener(this);
+		comingSoon.addActionListener(this);
+		integral101.addActionListener(this);
 		quit.addActionListener(this);
 		back.addActionListener(this);
 	}
@@ -462,8 +457,8 @@ public class MenuState extends AppState implements ActionListener
 	 */
 	public void removeMenu() {
 		asm.pane.remove(calculate);
-		asm.pane.remove(instructions);
-		asm.pane.remove(study);
+		asm.pane.remove(comingSoon);
+		asm.pane.remove(integral101);
 		asm.pane.remove(quit);
 	}
 
@@ -495,109 +490,11 @@ public class MenuState extends AppState implements ActionListener
 		asm.pane.remove(back);
 	}
 
-	/** 
-	 * This method loads the instructions pane. Mnemonics are also set for the buttons. A window listener is also added here.
-	 * @param pane JPanel reference variable
-	 * @param slide1 JButton reference variable for instructions page 1.
-	 * @param slide2 JButton reference variable for instructions page 2.
-	 * @param slide3 JButton reference variable for instructions page 3.
-	 * @param slide4 JButton reference variable for instructions page 4.
-	 * @param slide5 JButton reference variable for instructions page 5.
-	 * @param slide6 JButton reference variable for instructions page 6.
-	 * @param slide7 JButton reference variable for instructions page 7.
-	 * @param slideClose JButton reference variable for back to main menu button.
-	 * @param toolbar JToolBar reference variable for where the toolbar is placed.
-	 * @param s SpringLayout reference variable.
-	 * @param instructionLabels Arraylist of JLabels of instruction labels.
-	 * @param instructionImages ArrayList of JLabels of instruction images.
-	 * @param e Exception reference variable, prints the stack trace in case of error.
+	/**
+	 * This method controls the hover over screen for coming soon.
 	 */
-	public void loadInstructions() {
-		JPanel pane = new JPanel();
-
-		JButton slide1 = new JButton("Page 1");
-		JButton slide2 = new JButton("Page 2");
-		JButton slide3 = new JButton("Page 3");
-		JButton slide4 = new JButton("Page 4");
-		JButton slide5 = new JButton("Page 5");
-		JButton slide6 = new JButton("Page 6");
-		JButton slide7 = new JButton("Page 7");
-		JButton slideClose = new JButton("Back to Main Menu");
-
-		JToolBar toolbar = new JToolBar(null, JToolBar.HORIZONTAL);
-
-		toolbar.add(slide1);
-		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolbar.add(slide2);
-		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolbar.add(slide3);
-		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolbar.add(slide4);
-		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolbar.add(slide5);
-		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolbar.add(slide6);
-		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolbar.add(slide7);
-		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolbar.add(slideClose);
-
-		instructionsFrame.add(toolbar, BorderLayout.SOUTH);
-		toolbar.setFloatable(false);
-		toolbar.setRollover(true);
-
-		slide1.addActionListener(this);
-		slide1.setMnemonic(KeyEvent.VK_1);
-		slide2.addActionListener(this);
-		slide2.setMnemonic(KeyEvent.VK_2);
-		slide3.addActionListener(this);
-		slide3.setMnemonic(KeyEvent.VK_3);
-		slide4.addActionListener(this);
-		slide4.setMnemonic(KeyEvent.VK_4);
-		slide5.addActionListener(this);
-		slide5.setMnemonic(KeyEvent.VK_5);
-		slide6.addActionListener(this);
-		slide6.setMnemonic(KeyEvent.VK_6);
-		slide7.addActionListener(this);
-		slide7.setMnemonic(KeyEvent.VK_7);
-		slideClose.addActionListener(this);
-		slideClose.setMnemonic(KeyEvent.VK_B);
-
-		SpringLayout s = new SpringLayout();
-		ArrayList<JLabel> instructionLabels = new ArrayList<JLabel>();
-		ArrayList<ImageIcon> instructionImages = new ArrayList<ImageIcon>();
-		try {
-			for (int x = 0; x < 7; x++)
-				instructionImages.add(new ImageIcon("src/res/Instruction Images/Page " + (x+1) + ".png"));
-			for (ImageIcon i : instructionImages)
-			{
-				instructionLabels.add(new JLabel(i));
-			}
-
-			pane.setLayout(s);
-			pane.add(instructionLabels.get(slide));
-			s.putConstraint(SpringLayout.NORTH, instructionLabels.get(slide), 0, SpringLayout.NORTH, pane);
-			s.putConstraint(SpringLayout.WEST, instructionLabels.get(slide), 0, SpringLayout.WEST, pane);
-			instructionsFrame.add(pane);
-			instructionsFrame.setVisible(true);
-			instructionsFrame.setSize (600, 600);
-			instructionsFrame.setLocationRelativeTo(null);
-
-			instructionsFrame.addWindowListener(new java.awt.event.WindowAdapter() {
-				public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-					SwingUtilities.getWindowAncestor(asm.pane).setVisible(true);
-					removeAnimation();
-					addAnimation();
-					instructionsFrame.setVisible(false);
-					myState = 0;
-				}
-			});
-
-			SwingUtilities.getWindowAncestor(asm.pane).setVisible(false);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void comingSoonHover () {
+		System.out.println("A hover over board on the right will be placed in the future. Likely won't be here as it is a hover over.");
 	}
 
 	/** 
@@ -741,12 +638,12 @@ public class MenuState extends AppState implements ActionListener
 			System.exit(0);
 		else if (type.equals("Calculate")) {
 			asm.pane.stateCheck = true;
-			//asm.pane.state = asm.DIFFICULTYSTATE;
+			asm.pane.state = asm.SELECTSTATE;
 		}
-		else if (type.equals("Instructions")) { 
-			loadInstructions();
+		else if (type.equals("Coming Soon")) {
+			comingSoonHover();
 		}
-		else if (type.equals("Study")) {
+		else if (type.equals("Integration 101")) {
 			loadStudy();
 		}
 		else if (type.equals("Back")) {
@@ -755,35 +652,6 @@ public class MenuState extends AppState implements ActionListener
 			addMenu();
 			addAnimation();
 			myState = 0;
-		}
-		else if (type.equals("Page 1"))
-		{ 
-			slide = 0;   
-			loadInstructions();
-		}
-		else if (type.equals("Page 2")) { 
-			slide = 1;   
-			loadInstructions();
-		}
-		else if (type.equals("Page 3")) { 
-			slide = 2;   
-			loadInstructions();
-		}
-		else if (type.equals("Page 4")) { 
-			slide = 3;   
-			loadInstructions();
-		}
-		else if (type.equals("Page 5")) { 
-			slide = 4;   
-			loadInstructions();
-		}
-		else if (type.equals("Page 6")) { 
-			slide = 5;   
-			loadInstructions();
-		}
-		else if (type.equals("Page 7")) { 
-			slide = 6;   
-			loadInstructions();
 		}
 		else if (type.equals("Study 1")) {
 			slideStudy = 0;
@@ -808,7 +676,6 @@ public class MenuState extends AppState implements ActionListener
 		}    
 		else {
 			SwingUtilities.getWindowAncestor(asm.pane).setVisible(true);
-			instructionsFrame.setVisible(false);
 			studyFrame.setVisible(false);
 			myState = 0;
 		}
