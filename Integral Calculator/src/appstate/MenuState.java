@@ -24,7 +24,7 @@ import javax.swing.SwingUtilities;
  * This class is the main menu of the game. It sets the correct size and also the various buttons on the 
  * main menu.
  * @author Peter Huang
- * @version 1.0 December 30 2014
+ * @version 1.0.1 January 9 2014
  */
 public class MenuState extends AppState implements ActionListener
 {
@@ -149,9 +149,14 @@ public class MenuState extends AppState implements ActionListener
 	private JButton comingSoon = new JButton(); 
 
 	/** 
-	 * This button is the study button, which displays study material.
+	 * This button is the study button, which displays about material.
 	 */
 	private JButton integral101 = new JButton();
+	
+	/**
+	 * This button is the button for consumer surplus calculations.
+	 */
+	private JButton consumerSurplus = new JButton();
 	
 	/** 
 	 * This button is the quit button, which exits the game.
@@ -210,6 +215,9 @@ public class MenuState extends AppState implements ActionListener
 
 		asm.layout.putConstraint(SpringLayout.NORTH, calculate, 330, SpringLayout.NORTH, title);
 		asm.layout.putConstraint(SpringLayout.WEST, calculate, 95, SpringLayout.WEST, asm.pane);
+		
+		asm.layout.putConstraint(SpringLayout.NORTH, consumerSurplus, 325, SpringLayout.NORTH, title);
+		asm.layout.putConstraint(SpringLayout.WEST, consumerSurplus, 450, SpringLayout.WEST, asm.pane);
 
 		asm.layout.putConstraint(SpringLayout.NORTH, comingSoon, -10, SpringLayout.SOUTH, calculate);
 		asm.layout.putConstraint(SpringLayout.WEST, comingSoon, 105, SpringLayout.WEST, asm.pane); 
@@ -232,6 +240,7 @@ public class MenuState extends AppState implements ActionListener
 		asm.pane.add(calculate);
 		asm.pane.add(comingSoon);
 		asm.pane.add(integral101);
+		asm.pane.add(consumerSurplus);
 		asm.pane.add(quit);
 	}
 
@@ -278,6 +287,9 @@ public class MenuState extends AppState implements ActionListener
 
 		ImageIcon integral101Img = new ImageIcon();
 		ImageIcon integral101RollImg = new ImageIcon();
+		
+		ImageIcon consumerSurplusImg = new ImageIcon();
+		ImageIcon consumerSurplusRollImg = new ImageIcon();
 
 		ImageIcon quitImg = new ImageIcon();
 		ImageIcon quitRollImg = new ImageIcon();
@@ -302,6 +314,8 @@ public class MenuState extends AppState implements ActionListener
 			comingSoonRollImg = new ImageIcon("src/res/menu_options/Coming_Soon2.png");
 			integral101Img = new ImageIcon("src/res/menu_options/Integrals101.png");
 			integral101RollImg = new ImageIcon("src/res/menu_options/Integrals1012.png");
+			consumerSurplusImg = new ImageIcon("src/res/menu_options/Consumer_Surplus.png");
+			consumerSurplusRollImg = new ImageIcon("src/res/menu_options/Consumer_Surplus2.png");
 			quitImg = new ImageIcon("src/res/menu_options/Exit.png");
 			quitRollImg = new ImageIcon("src/res/menu_options/Exit2.png");
 			backImg = new ImageIcon("src/res/menu_options/Back.png");
@@ -334,7 +348,7 @@ public class MenuState extends AppState implements ActionListener
 		comingSoon.setBorderPainted(false);
 		comingSoon.setContentAreaFilled(false);
 		comingSoon.setFocusPainted(false);
-		comingSoon.setMnemonic(KeyEvent.VK_S);
+		//comingSoon.setMnemonic(KeyEvent.VK_S);
 
 		integral101 = new JButton(integral101Img);
 		integral101.setRolloverIcon(integral101RollImg);
@@ -342,6 +356,13 @@ public class MenuState extends AppState implements ActionListener
 		integral101.setContentAreaFilled(false);
 		integral101.setFocusPainted(false);
 		integral101.setMnemonic(KeyEvent.VK_W);
+		
+		consumerSurplus = new JButton(consumerSurplusImg);
+		consumerSurplus.setRolloverIcon(consumerSurplusRollImg);
+		consumerSurplus.setBorderPainted(false);
+		consumerSurplus.setContentAreaFilled(false);
+		consumerSurplus.setFocusPainted(false);
+		consumerSurplus.setMnemonic(KeyEvent.VK_S);
 
 		quit = new JButton(quitImg);
 		quit.setRolloverIcon(quitRollImg);
@@ -362,10 +383,12 @@ public class MenuState extends AppState implements ActionListener
 		quit.setActionCommand("Quit");
 		back.setActionCommand("Back");
 		integral101.setActionCommand("Integration 101");
+		consumerSurplus.setActionCommand("Consumer Surplus");
 
 		calculate.addActionListener(this);
 		comingSoon.addActionListener(this);
 		integral101.addActionListener(this);
+		consumerSurplus.addActionListener(this);
 		quit.addActionListener(this);
 		back.addActionListener(this);
 	}
@@ -459,6 +482,7 @@ public class MenuState extends AppState implements ActionListener
 		asm.pane.remove(calculate);
 		asm.pane.remove(comingSoon);
 		asm.pane.remove(integral101);
+		asm.pane.remove(consumerSurplus);
 		asm.pane.remove(quit);
 	}
 
@@ -500,11 +524,13 @@ public class MenuState extends AppState implements ActionListener
 	/** 
 	 * This method loads the study pane. Mnemonics are also set for the buttons. A window listener is also added here.
 	 * @param pane JPanel reference variable
-	 * @param slide1 JButton reference variable for study page 1.
-	 * @param slide2 JButton reference variable for study page 2.
-	 * @param slide3 JButton reference variable for study page 3.
-	 * @param slide4 JButton reference variable for study page 4.
-	 * @param slide5 JButton reference variable for study page 5.
+	 * @param slide1 JButton reference variable for about page 1.
+	 * @param slide2 JButton reference variable for about page 2.
+	 * @param slide3 JButton reference variable for about page 3.
+	 * @param slide4 JButton reference variable for the consumer surplus page 1.
+	 * @param slide5 JButton reference variable for the consumer surplus page 2.
+	 * @param slide5 JButton reference variable for the consumer surplus page 3.
+	 * @param slide5 JButton reference variable for the consumer surplus page 4.
 	 * @param slideClose JButton reference variable for back to main menu button.
 	 * @param toolbar JToolBar reference variable for where the toolbar is placed.
 	 * @param s SpringLayout reference variable.
@@ -515,13 +541,15 @@ public class MenuState extends AppState implements ActionListener
 	public void loadStudy() {
 		JPanel pane = new JPanel();
 
-		JButton slide1 = new JButton("Study 1");
-		JButton slide2 = new JButton("Study 2");
-		JButton slide3 = new JButton("Study 3");
-		JButton slide4 = new JButton("Study 4");
-		JButton slide5 = new JButton("Study 5");
+		JButton slide1 = new JButton("About 1");
+		JButton slide2 = new JButton("About 2");
+		JButton slide3 = new JButton("About 3");
+		JButton slide4 = new JButton("Consumer Surplus 1");
+		JButton slide5 = new JButton("CS 2");
+		JButton slide6 = new JButton("CS 3");
+		JButton slide7 = new JButton("CS 4");
 
-		JButton slideClose = new JButton("Back to Main Menu");
+		JButton slideClose = new JButton("Back to Main Menu.....");
 
 		JToolBar toolbar = new JToolBar(null, JToolBar.HORIZONTAL);
 
@@ -534,6 +562,10 @@ public class MenuState extends AppState implements ActionListener
 		toolbar.add(slide4);
 		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
 		toolbar.add(slide5);
+		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
+		toolbar.add(slide6);
+		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
+		toolbar.add(slide7);
 		toolbar.add(new JSeparator(SwingConstants.VERTICAL));
 		toolbar.add(slideClose);
 
@@ -551,6 +583,10 @@ public class MenuState extends AppState implements ActionListener
 		slide4.setMnemonic(KeyEvent.VK_4);
 		slide5.addActionListener(this);
 		slide5.setMnemonic(KeyEvent.VK_5);
+		slide6.addActionListener(this);
+		slide6.setMnemonic(KeyEvent.VK_6);
+		slide7.addActionListener(this);
+		slide7.setMnemonic(KeyEvent.VK_7);
 		slideClose.addActionListener(this);
 		slideClose.setMnemonic(KeyEvent.VK_B);
 
@@ -558,8 +594,8 @@ public class MenuState extends AppState implements ActionListener
 		ArrayList<JLabel> studyLabels = new ArrayList<JLabel>();
 		ArrayList<ImageIcon> studyImages = new ArrayList<ImageIcon>();
 		try {
-			for (int x = 0; x < 5; x++)
-				studyImages.add(new ImageIcon("src/res/Study Images/Page " + (x+1) + ".png"));
+			for (int x = 1; x <= 7; x++)
+				studyImages.add(new ImageIcon("src/res/integrate_101/ICP_" + (x) + ".png"));
 			for (ImageIcon i : studyImages)
 			{
 				studyLabels.add(new JLabel(i));
@@ -571,7 +607,8 @@ public class MenuState extends AppState implements ActionListener
 			s.putConstraint(SpringLayout.WEST, studyLabels.get(slideStudy), 0, SpringLayout.WEST, pane);
 			studyFrame.add(pane);
 			studyFrame.setVisible(true);
-			studyFrame.setSize (510, 575);
+			studyFrame.setSize (717, 570);
+			//studyFrame.setResizable(false);
 			studyFrame.setLocationRelativeTo(null);
 
 			studyFrame.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -592,7 +629,7 @@ public class MenuState extends AppState implements ActionListener
 	}
 
 	/** 
-	 * This method adds the animation of the main menu moving cells.
+	 * This method adds the animation of the main menu moving integral related objects.
 	 */
 	public void addAnimation() {
 		asm.pane.add(integralSign);
@@ -626,7 +663,7 @@ public class MenuState extends AppState implements ActionListener
 
 	/** 
 	 * This is the action performed method that sets the functions for each button when clicked. They include the main menu
-	 * buttons, study buttons, instruction buttons, stage selectors, and allows printing when the print variable is clicked.
+	 * buttons, integration 101 buttons, calculate buttons, and other coming soon buttons.
 	 * @param ae ActionEvent refernece variable
 	 * @param type String variable that is substituted for ae reference variable.
 	 * @param e Exception reference variable.
@@ -646,6 +683,11 @@ public class MenuState extends AppState implements ActionListener
 		else if (type.equals("Integration 101")) {
 			loadStudy();
 		}
+		else if (type.equals("Consumer Surplus")) {
+			asm.pane.stateCheck = true;
+			asm.pane.state = asm.CS_STATE;
+			System.out.println("Hi vsn 2");
+		}
 		else if (type.equals("Back")) {
 			removeAnimation();
 			removeBack();
@@ -653,25 +695,32 @@ public class MenuState extends AppState implements ActionListener
 			addAnimation();
 			myState = 0;
 		}
-		else if (type.equals("Study 1")) {
+		else if (type.equals("About 1")) {
 			slideStudy = 0;
-			loadStudy();
-			System.out.println("hi");
+			loadStudy();			
 		}
-		else if (type.equals("Study 2")) {
+		else if (type.equals("About 2")) {
 			slideStudy = 1;
 			loadStudy();
 		}
-		else if (type.equals("Study 3")) {
+		else if (type.equals("About 3")) {
 			slideStudy = 2;
 			loadStudy();
 		}
-		else if (type.equals("Study 4")) {
+		else if (type.equals("Consumer Surplus 1")) {
 			slideStudy = 3;
 			loadStudy();
 		}
-		else if (type.equals("Study 5")) {
+		else if (type.equals("CS 2")) {
 			slideStudy = 4;
+			loadStudy();
+		}    
+		else if (type.equals("CS 3")) {
+			slideStudy = 5;
+			loadStudy();
+		}    
+		else if (type.equals("CS 4")) {
+			slideStudy = 6;
 			loadStudy();
 		}    
 		else {

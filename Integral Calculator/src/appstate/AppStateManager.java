@@ -42,16 +42,6 @@ public class AppStateManager {
 	 * Holds the value for menustate.
 	 */
 	public final int MENUSTATE = 1;
-
-	/** 
-	 * Holds the value for stageonestate.
-	 */
-	//public final int STAGEONESTATE = 2;
-	
-	/** 
-	 * Holds the value for inputscorestate.
-	 */
-	//public final int INPUTSCORESTATE = 3;
 	
 	/** 
 	 * Holds the value for selectstate.
@@ -62,6 +52,11 @@ public class AppStateManager {
 	 * Holds the value for the definite integration state.
 	 */
 	public final int DEFINITE_INTEGRAL_STATE = 3;
+	
+	/**
+	 * Holds the value for the consumer surplus state.
+	 */
+	public final int CS_STATE = 4;
 
 	/** 
 	 * Creates the AppStateManager while sending in the game screen for the game and its layout.
@@ -76,6 +71,7 @@ public class AppStateManager {
 		appStates.add(new MenuState(this));
 		appStates.add(new SelectState(this));
 		appStates.add(new DefiniteState(this));
+		appStates.add(new ConsumerSurplusState(this));
 		//appStates.add(new StageOneState(this));
 		//appStates.add(new InputScoreState(this));
 		

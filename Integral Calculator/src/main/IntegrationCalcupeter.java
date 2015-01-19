@@ -39,16 +39,16 @@ public class IntegrationCalcupeter extends JFrame implements ActionListener, Key
 	public IntegrationCalcupeter(){
 		super ("The Integration Calcupeter 1.0");
 		JMenuBar bar = new JMenuBar();
-		JMenu helpMe = new JMenu("Help");
+		//JMenu helpMe = new JMenu("Help");
 		JMenu file = new JMenu("File");
-		JMenuItem helpItem = new JMenuItem("Help");
+		//JMenuItem helpItem = new JMenuItem("Help");
 		JMenuItem fileItem = new JMenuItem("Main Menu");
-		helpMe.add(helpItem);
+		//helpMe.add(helpItem);
 		file.add(fileItem);
 		setJMenuBar(bar);
 		bar.add(file);
-		bar.add(helpMe);
-		helpItem.addActionListener(this);
+		//bar.add(helpMe);
+		//helpItem.addActionListener(this);
 		fileItem.addActionListener(this);
 		add(app = new AppScreen());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,15 +65,15 @@ public class IntegrationCalcupeter extends JFrame implements ActionListener, Key
 	 * @param ae ActionEvent takes in actionevents from jmenubar
 	 */
 	public void actionPerformed(ActionEvent ae) {
-		if (ae.getActionCommand().equals("Help")) {
-			try {
-				desk.open(new File("User Manual.chm"));
-			}
-			catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		else
+//		if (ae.getActionCommand().equals("Help")) {
+//			try {
+//				desk.open(new File("User Manual.chm"));
+//			}
+//			catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+		if (ae.getActionCommand().equals("Main Menu"))
 			app.asm.setState(app.asm.MENUSTATE);
 	}
 

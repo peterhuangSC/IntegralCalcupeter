@@ -1,5 +1,11 @@
 package appstate;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.URL;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SpringLayout;
@@ -42,6 +48,7 @@ public class SplashState extends AppState {
 		catch (Exception e) {
 			System.out.println("Splash Screen Initialization Error!");
 		}
+		music();
 	}
 
 	/** This method creates the delay to allow the animations in the splash screen.
@@ -71,4 +78,13 @@ public class SplashState extends AppState {
 	/** This method is responsible for the paint component. It is inherited from the GameState abstract class.
 	 * @param g java.awt.Graphics reference variable. */
 	public void paintComponent(java.awt.Graphics g) {}
+	
+	public void music() {
+//		//URL url = SoundTest.class.getResource("back.wav");
+//		URL introMusic = SplashState.class.getResource("src/res/splash music");
+//		//InputStream introMusic = new FileInputStream("src/res/splash music");
+//		AudioClip clip = Applet.newAudioClip(introMusic);
+//		//AudioClip clip2 = Applet.newAudioClip(url);
+//		clip.play();
+	}
 }
