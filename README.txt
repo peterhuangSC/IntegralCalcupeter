@@ -16,3 +16,7 @@ Type of calculation select screen done, and so is most of the definite integral 
 
 Next session: Blood Flow feature as well as other applications of integration features. If got lots of time, figure
 out indefinite integration.
+
+Known Issues:
+* Program does not integrate properly if the lower bound integrand is greater than the higher bound integrand
+* Program idling too long when calculating covergent infinite limits
